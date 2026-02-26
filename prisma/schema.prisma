@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  password  String
+  name      String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  clients   Client[]
+  company   Company?
+  invoices  Invoice[]
+}
+
+model Company {
+  id                        String   @id @default(cuid())
+  userId                    String   @unique
+  name                      String
+  address                   String?
+  city                      String?
+  state                     String?
+  pincode                   String?
+  gstin                     String?
+  lutReference              String?
+  signatureDataUrl          String?
+  authorizedSignatory       String?
+  phone                     String?
+  email                     String?
+  bankName                  String?
+  bankAccount               String?
+  bankIfsc                  String?
+  swiftCode                 String?
+  logoUrl                   String?
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+  fssaiLicense              String?
+  defaultTermsAndConditions String?
+  defaultGstRate            Float?
+  defaultCgstRate           Float?
+  defaultSgstRate           Float?
+  invoiceNumberPrefix       String?
+  invoiceNumberSerialLength Int?     @default(3)
+  user                      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Client {
+  id           String    @id @default(cuid())
+  userId       String
+  name         String
+  email        String?
+  phone        String?
+  address      String?
+  city         String?
+  state        String?
+  pincode      String?
+  country      String?
+  gstin        String?
+  ein          String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  drugLicense  String?
+  otherLicense String?
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  invoices     Invoice[]
+}
+
+model Invoice {
+  id                 String        @id @default(cuid())
+  userId             String
+  clientId           String?
+  invoiceNumber      String
+  type               String
+  status             String        @default("draft")
+  currency           String        @default("INR")
+  invoiceDate        DateTime
+  dueDate            DateTime?
+  placeOfSupply      String?
+  notes              String?
+  terms              String?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+  lrNumber           String?
+  paymentTerms       String?
+  poNumber           String?
+  termsAndConditions String?
+  transport          String?
+  gstRate            Float?
+  cgstRate           Float?
+  sgstRate           Float?
+  exportSubtotalInr  Float?
+  irn                String?
+  irnQrCodeDataUrl   String?
+  deletedAt          DateTime?
+  client             Client?       @relation(fields: [clientId], references: [id])
+  user               User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items              InvoiceItem[]
+
+  @@unique([userId, invoiceNumber])
+}
+
+model InvoiceItem {
+  id          String   @id @default(cuid())
+  invoiceId   String
+  description String
+  quantity    Float    @default(1)
+  unit        String   @default("pcs")
+  rate        Float
+  amount      Float
+  hsnCode     String?
+  batchNo     String?
+  expDate     DateTime?
+  mfgDate     DateTime?
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+}

@@ -22,5 +22,22 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Ensure form input text is always visible */
+input:not([type="checkbox"]):not([type="radio"]), select, textarea {
+  color: #171717 !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #a8a29e !important;
+}
+
+/* Ensure labels are visible on white card backgrounds (e.g. in dark mode) */
+@media (prefers-color-scheme: dark) {
+  .rounded-xl.bg-white label,
+  .rounded-lg.bg-white label {
+    color: #171717;
+  }
 }
