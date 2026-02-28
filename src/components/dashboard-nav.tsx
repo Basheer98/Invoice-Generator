@@ -22,7 +22,7 @@ const navItems = [
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
-export function DashboardNav() {
+export function DashboardNav({ onNavigate }: { onNavigate?: () => void } = {}) {
   const pathname = usePathname();
 
   return (
@@ -42,6 +42,7 @@ export function DashboardNav() {
           <Link
             key={href}
             href={href}
+            onClick={onNavigate}
             className={`flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors ${
               isActive
                 ? "bg-amber-50 text-amber-700"

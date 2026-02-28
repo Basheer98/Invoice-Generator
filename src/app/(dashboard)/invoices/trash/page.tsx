@@ -22,7 +22,7 @@ export default async function InvoicesTrashPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
           <Link
             href="/invoices"
             className="inline-flex items-center gap-2 rounded-lg border border-stone-300 px-4 py-2.5 text-sm font-medium text-stone-700 hover:bg-stone-50"
@@ -37,7 +37,7 @@ export default async function InvoicesTrashPage() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-stone-200 bg-white shadow-sm overflow-hidden">
+      <div className="rounded-xl border border-stone-200 bg-white shadow-sm overflow-x-auto">
         {invoices.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 px-4">
             <Trash2 className="h-12 w-12 text-stone-300" />
@@ -50,7 +50,7 @@ export default async function InvoicesTrashPage() {
             </Link>
           </div>
         ) : (
-          <table className="w-full">
+          <table className="w-full min-w-[640px]">
             <thead>
               <tr className="border-b border-stone-200 bg-stone-50/50">
                 <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">

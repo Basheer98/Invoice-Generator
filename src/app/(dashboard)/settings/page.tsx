@@ -158,7 +158,7 @@ export default function SettingsPage() {
           </div>
         )}
 
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <h2 className="mb-4 text-lg font-semibold text-stone-900">
             Business Details
           </h2>
@@ -371,7 +371,7 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <h2 className="mb-4 text-lg font-semibold text-stone-900">
             Default Terms & Conditions
           </h2>
@@ -389,7 +389,7 @@ export default function SettingsPage() {
           />
         </div>
 
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <h2 className="mb-4 text-lg font-semibold text-stone-900">
             Digital Signature
           </h2>
@@ -472,7 +472,7 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <h2 className="mb-4 text-lg font-semibold text-stone-900">
             Bank Details (for Export Invoices)
           </h2>

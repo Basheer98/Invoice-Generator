@@ -76,7 +76,7 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-lg font-semibold text-stone-900">
           Recent Invoices
         </h2>
@@ -89,7 +89,7 @@ export default async function DashboardPage() {
         </Link>
       </div>
 
-      <div className="rounded-xl border border-stone-200 bg-white shadow-sm overflow-hidden">
+      <div className="rounded-xl border border-stone-200 bg-white shadow-sm overflow-x-auto">
         {invoices.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 px-4">
             <FileText className="h-12 w-12 text-stone-300" />
@@ -103,7 +103,7 @@ export default async function DashboardPage() {
             </Link>
           </div>
         ) : (
-          <table className="w-full">
+          <table className="w-full min-w-[540px]">
             <thead>
               <tr className="border-b border-stone-200 bg-stone-50/50">
                 <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">

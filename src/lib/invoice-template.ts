@@ -343,6 +343,10 @@ const STYLES = `
   }
   .footer__bank p { margin: 0; }
   .footer__bank p:first-child { font-weight: 700; margin-bottom: 4px; }
+
+  @media print {
+    .print-bar { display: none !important; }
+  }
 `;
 
 function escapeHtml(s: string): string {

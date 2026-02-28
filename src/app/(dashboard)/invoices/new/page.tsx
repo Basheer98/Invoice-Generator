@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Plus, Trash2 } from "lucide-react";
-import { InvoicePreview } from "@/components/invoice-preview";
 
 type Client = { id: string; name: string; email?: string | null; address?: string | null; city?: string | null; gstin?: string | null; state?: string | null; pincode?: string | null; country?: string | null; ein?: string | null; drugLicense?: string | null; otherLicense?: string | null };
 
@@ -280,37 +279,6 @@ export default function NewInvoicePage() {
     }
   };
 
-  const previewData = {
-    type,
-    invoiceNumber,
-    invoiceDate,
-    dueDate,
-    placeOfSupply,
-    poNumber,
-    lrNumber,
-    transport,
-    paymentTerms,
-    termsAndConditions,
-    gstRate,
-    cgstRate,
-    sgstRate,
-    items,
-    clientName,
-    clientEmail,
-    clientAddress,
-    clientCity,
-    clientState,
-    clientGstin,
-    clientPincode,
-    clientCountry,
-    clientEin,
-    notes,
-    exportFxRate,
-    exportInrMode,
-    exportSubtotalInrDirect,
-    irn,
-  };
-
   return (
     <div className="mx-auto max-w-7xl space-y-6">
       <Link
@@ -323,15 +291,14 @@ export default function NewInvoicePage() {
 
       <h1 className="text-2xl font-bold text-stone-900">New Invoice</h1>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_400px]">
-      <form onSubmit={handleSubmit} className="space-y-8">
+      <form onSubmit={handleSubmit} className="max-w-3xl space-y-8">
         {error && (
           <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
             {error}
           </div>
         )}
 
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <h2 className="mb-4 text-lg font-semibold text-stone-900">Invoice Type</h2>
           <div className="flex gap-4">
             <label className="flex cursor-pointer items-center gap-2 text-stone-900">
@@ -357,7 +324,7 @@ export default function NewInvoicePage() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <h2 className="mb-4 text-lg font-semibold text-stone-900">Client</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
@@ -503,7 +470,7 @@ export default function NewInvoicePage() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <h2 className="mb-4 text-lg font-semibold text-stone-900">Dates & Transaction Details</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
@@ -721,8 +688,8 @@ export default function NewInvoicePage() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
-          <div className="mb-4 flex items-center justify-between">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-lg font-semibold text-stone-900">Line Items</h2>
             <button
               type="button"
@@ -735,7 +702,7 @@ export default function NewInvoicePage() {
           </div>
           <div className="overflow-x-auto rounded-lg border-2 border-stone-800">
             {type === "domestic" ? (
-              <table className="w-full border-collapse">
+              <table className="w-full min-w-[700px] border-collapse">
                 <thead>
                   <tr className="bg-stone-700">
                     <th className="border border-stone-600 px-2 py-2 text-center text-xs font-medium text-white">S. No.</th>
@@ -837,7 +804,7 @@ export default function NewInvoicePage() {
                 </tbody>
               </table>
             ) : (
-              <table className="w-full border-collapse">
+              <table className="w-full min-w-[400px] border-collapse">
                 <thead>
                   <tr className="bg-stone-700">
                     <th className="border border-stone-600 px-2 py-2 text-center text-xs font-medium text-white">S. No.</th>
@@ -1046,10 +1013,6 @@ export default function NewInvoicePage() {
           </Link>
         </div>
       </form>
-      <aside className="hidden lg:block">
-        <InvoicePreview formData={previewData} type={type} />
-      </aside>
-      </div>
     </div>
   );
 }

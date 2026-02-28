@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { formatDateDDMMYYYY } from "@/lib/format-date";
 import { ArrowLeft } from "lucide-react";
 import { DownloadButton } from "@/components/download-button";
+import { PrintButton } from "@/components/print-button";
 import { amountInWords } from "@/lib/amount-in-words";
 import { formatAmount } from "@/lib/format-amount";
 import { buildCompanyAddr } from "@/lib/format-address";
@@ -93,10 +94,13 @@ export default async function InvoiceDetailPage({
           <ArrowLeft className="h-4 w-4" />
           Back to invoices
         </Link>
-        <DownloadButton invoiceId={invoice.id} invoiceNumber={invoice.invoiceNumber} />
+        <div className="flex flex-wrap items-center gap-2">
+          <PrintButton invoiceId={invoice.id} />
+          <DownloadButton invoiceId={invoice.id} invoiceNumber={invoice.invoiceNumber} />
+        </div>
       </div>
 
-      <div className="rounded-xl border border-stone-200 bg-white p-8 shadow-sm">
+      <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-8">
         <div className="mb-8 flex items-start justify-between">
           <div>
             <h1 className="text-2xl font-bold text-stone-900">

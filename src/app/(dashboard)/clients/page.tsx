@@ -187,7 +187,7 @@ export default function ClientsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-bold text-stone-900">Clients</h1>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button
             onClick={openNewClient}
             className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700"
