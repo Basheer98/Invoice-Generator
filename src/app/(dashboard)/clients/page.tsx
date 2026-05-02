@@ -186,18 +186,19 @@ export default function ClientsPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold text-stone-900">Clients</h1>
-        <div className="flex flex-wrap gap-3">
+        <h1 className="text-xl font-bold text-stone-900 sm:text-2xl">Clients</h1>
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
           <button
+            type="button"
             onClick={openNewClient}
-            className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-amber-600 px-3 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700 active:bg-amber-800 sm:min-h-0 sm:px-4"
           >
-            <Plus className="h-4 w-4" />
+            <Plus className="h-4 w-4 shrink-0" />
             Add Client
           </button>
           <Link
             href="/invoices/new"
-            className="inline-flex items-center gap-2 rounded-lg border border-stone-300 px-4 py-2.5 text-sm font-medium text-stone-700 transition-colors hover:bg-stone-50"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-stone-300 px-3 py-2.5 text-center text-sm font-medium text-stone-700 transition-colors hover:bg-stone-50 active:bg-stone-100 sm:min-h-0 sm:px-4"
           >
             New Invoice
           </Link>
@@ -209,8 +210,8 @@ export default function ClientsPage() {
       </p>
 
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/50 p-4">
-          <div className="w-full max-w-md rounded-xl border border-stone-200 bg-white p-6 shadow-xl">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-stone-900/50 p-0 sm:items-center sm:p-4">
+          <div className="max-h-[90dvh] w-full max-w-md overflow-y-auto rounded-t-2xl border border-stone-200 bg-white p-4 shadow-xl sm:rounded-xl sm:p-6">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-lg font-semibold text-stone-900">
                 {editingClient ? "Edit Client" : "Add Client"}

@@ -38,7 +38,7 @@ function LoginForm() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-stone-50 px-4">
+    <div className="flex min-h-dvh items-center justify-center bg-stone-50 px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] pt-[max(2rem,env(safe-area-inset-top))]">
       <div className="w-full max-w-sm space-y-8 rounded-2xl border border-stone-200 bg-white p-8 shadow-sm">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-stone-900">
@@ -103,7 +103,7 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="flex min-h-screen items-center justify-center bg-stone-50">
+      <div className="flex min-h-dvh items-center justify-center bg-stone-50">
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-amber-600 border-t-transparent" />
       </div>
     }>

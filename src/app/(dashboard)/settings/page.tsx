@@ -140,7 +140,7 @@ export default function SettingsPage() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      <h1 className="text-2xl font-bold text-stone-900">Company Settings</h1>
+      <h1 className="text-xl font-bold text-stone-900 sm:text-2xl">Company Settings</h1>
       <p className="text-stone-600">
         This information will appear on your invoices.
       </p>
@@ -538,7 +538,7 @@ export default function SettingsPage() {
         <button
           type="submit"
           disabled={saving}
-          className="rounded-lg bg-amber-600 px-6 py-2.5 font-medium text-white transition-colors hover:bg-amber-700 disabled:opacity-50"
+          className="min-h-11 w-full rounded-lg bg-amber-600 px-6 py-2.5 font-medium text-white transition-colors hover:bg-amber-700 active:bg-amber-800 disabled:opacity-50 sm:w-auto"
         >
           {saving ? "Saving..." : "Save"}
         </button>

@@ -35,25 +35,27 @@ export default async function InvoicesPage({
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold text-stone-900">Invoices</h1>
-        <div className="flex flex-wrap items-center gap-3">
+        <h1 className="text-xl font-bold text-stone-900 sm:text-2xl">Invoices</h1>
+        <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <div className="w-full min-w-0 sm:w-auto sm:min-w-[200px] sm:flex-1">
             <InvoiceSearch initialQuery={q ?? ""} />
           </div>
-          <Link
-            href="/invoices/trash"
-            className="inline-flex items-center gap-2 rounded-lg border border-stone-300 px-4 py-2.5 text-sm font-medium text-stone-700 hover:bg-stone-50"
-          >
-            <Trash2 className="h-4 w-4" />
-            Trash
-          </Link>
-          <Link
-            href="/invoices/new"
-            className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700"
-          >
-            <Plus className="h-4 w-4" />
-            New Invoice
-          </Link>
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-none sm:gap-3">
+            <Link
+              href="/invoices/trash"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-stone-300 px-3 py-2.5 text-center text-sm font-medium text-stone-700 hover:bg-stone-50 active:bg-stone-100 sm:min-h-0 sm:px-4"
+            >
+              <Trash2 className="h-4 w-4 shrink-0" />
+              Trash
+            </Link>
+            <Link
+              href="/invoices/new"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-amber-600 px-3 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-amber-700 active:bg-amber-800 sm:min-h-0 sm:px-4"
+            >
+              <Plus className="h-4 w-4 shrink-0" />
+              New Invoice
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -77,25 +79,25 @@ export default async function InvoicesPage({
           <table className="w-full min-w-[640px]">
             <thead>
               <tr className="border-b border-stone-200 bg-stone-50/50">
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Invoice
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Client
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Type
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Date
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Status
                 </th>
-                <th className="px-6 py-4 text-right text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-right text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Amount
                 </th>
-                <th className="px-6 py-4 text-right text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-right text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Actions
                 </th>
               </tr>
@@ -108,7 +110,7 @@ export default async function InvoicesPage({
                     key={inv.id}
                     className="border-b border-stone-100 hover:bg-stone-50/50"
                   >
-                    <td className="px-6 py-4">
+                    <td className="px-3 py-3 sm:px-6 sm:py-4">
                       <Link
                         href={`/invoices/${inv.id}`}
                         className="font-medium text-stone-900 hover:text-amber-600"
@@ -116,10 +118,10 @@ export default async function InvoicesPage({
                         {inv.invoiceNumber}
                       </Link>
                     </td>
-                    <td className="px-6 py-4 text-stone-600">
+                    <td className="px-3 py-3 text-sm text-stone-600 sm:px-6 sm:py-4 sm:text-base">
                       {inv.client?.name ?? "—"}
                     </td>
-                    <td className="px-6 py-4 text-stone-600">
+                    <td className="px-3 py-3 text-sm text-stone-600 sm:px-6 sm:py-4 sm:text-base">
                       <span
                         className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${
                           inv.type === "export"
@@ -130,10 +132,10 @@ export default async function InvoicesPage({
                         {inv.type}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-stone-600">
+                    <td className="px-3 py-3 text-sm text-stone-600 sm:px-6 sm:py-4 sm:text-base">
                       {formatDateDDMMYYYY(inv.invoiceDate)}
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-3 py-3 sm:px-6 sm:py-4">
                       <span
                         className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${
                           inv.status === "paid"
@@ -146,11 +148,11 @@ export default async function InvoicesPage({
                         {inv.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-right font-medium text-stone-900">
+                    <td className="px-3 py-3 text-right text-sm font-medium text-stone-900 sm:px-6 sm:py-4 sm:text-base">
                       {inv.currency === "USD" ? "$" : "₹"}
                       {total.toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="px-3 py-3 text-right sm:px-6 sm:py-4">
                       <div className="flex items-center justify-end gap-2">
                         <Link
                           href={`/invoices/${inv.id}`}

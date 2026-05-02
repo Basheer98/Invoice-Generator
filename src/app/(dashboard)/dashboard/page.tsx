@@ -47,7 +47,7 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-stone-900">
+        <h1 className="text-xl font-bold leading-snug text-stone-900 sm:text-2xl">
           Welcome back{session.user.name ? `, ${session.user.name}` : ""}
         </h1>
         <p className="mt-1 text-stone-600">
@@ -55,20 +55,20 @@ export default async function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+      <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <p className="text-sm font-medium text-stone-500">Total Invoiced</p>
           <p className="mt-2 text-2xl font-bold text-stone-900">
             ₹{totalInvoiced.toLocaleString("en-IN")}
           </p>
         </div>
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <p className="text-sm font-medium text-stone-500">This Month</p>
           <p className="mt-2 text-2xl font-bold text-stone-900">
             ₹{monthInvoiced.toLocaleString("en-IN")}
           </p>
         </div>
-        <div className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <p className="text-sm font-medium text-stone-500">Recent Invoices</p>
           <p className="mt-2 text-2xl font-bold text-stone-900">
             {invoices.length}
@@ -82,7 +82,7 @@ export default async function DashboardPage() {
         </h2>
         <Link
           href="/invoices/new"
-          className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-amber-700"
+          className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700 active:bg-amber-800 sm:w-auto sm:min-h-0 sm:py-2"
         >
           <Plus className="h-4 w-4" />
           New Invoice
@@ -106,22 +106,22 @@ export default async function DashboardPage() {
           <table className="w-full min-w-[540px]">
             <thead>
               <tr className="border-b border-stone-200 bg-stone-50/50">
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Invoice
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Client
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Date
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Status
                 </th>
-                <th className="px-6 py-4 text-right text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-right text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Amount
                 </th>
-                <th className="px-6 py-4 text-right text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-right text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Actions
                 </th>
               </tr>
@@ -134,21 +134,21 @@ export default async function DashboardPage() {
                     key={inv.id}
                     className="border-b border-stone-100 hover:bg-stone-50/50"
                   >
-                    <td className="px-6 py-4">
+                    <td className="px-3 py-3 sm:px-6 sm:py-4">
                       <Link
                         href={`/invoices/${inv.id}`}
-                        className="font-medium text-stone-900 hover:text-amber-600"
+                        className="text-sm font-medium text-stone-900 hover:text-amber-600 sm:text-base"
                       >
                         {inv.invoiceNumber}
                       </Link>
                     </td>
-                    <td className="px-6 py-4 text-stone-600">
+                    <td className="px-3 py-3 text-sm text-stone-600 sm:px-6 sm:py-4 sm:text-base">
                       {inv.client?.name ?? "—"}
                     </td>
-                    <td className="px-6 py-4 text-stone-600">
+                    <td className="px-3 py-3 text-sm text-stone-600 sm:px-6 sm:py-4 sm:text-base">
                       {formatDateDDMMYYYY(inv.invoiceDate)}
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-3 py-3 sm:px-6 sm:py-4">
                       <span
                         className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${
                           inv.status === "paid"
@@ -161,14 +161,14 @@ export default async function DashboardPage() {
                         {inv.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-right font-medium text-stone-900">
+                    <td className="px-3 py-3 text-right text-sm font-medium text-stone-900 sm:px-6 sm:py-4 sm:text-base">
                       {inv.currency === "USD" ? "$" : "₹"}
                       {total.toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="px-3 py-3 text-right sm:px-6 sm:py-4">
                       <Link
                         href={`/invoices/${inv.id}`}
-                        className="text-sm font-medium text-amber-600 hover:text-amber-700"
+                        className="inline-flex min-h-10 items-center justify-end text-sm font-medium text-amber-600 hover:text-amber-700 active:text-amber-800"
                       >
                         View
                       </Link>

@@ -26,7 +26,7 @@ export function DashboardNav({ onNavigate }: { onNavigate?: () => void } = {}) {
   const pathname = usePathname();
 
   return (
-    <nav className="flex h-[calc(100vh-4rem)] flex-col gap-1 p-4">
+    <nav className="flex max-h-[calc(100dvh-4rem)] flex-col gap-1 overflow-y-auto overscroll-contain p-3 pb-[max(1rem,env(safe-area-inset-bottom))] sm:p-4 lg:max-h-none lg:h-[calc(100dvh-4rem)] lg:overflow-visible lg:pb-4">
       <div className="flex flex-col gap-1">
       {navItems.map(({ href, label, icon: Icon }) => {
         const isActive =
@@ -43,7 +43,7 @@ export function DashboardNav({ onNavigate }: { onNavigate?: () => void } = {}) {
             key={href}
             href={href}
             onClick={onNavigate}
-            className={`flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors ${
+            className={`flex min-h-11 items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors active:opacity-90 lg:min-h-0 lg:py-2.5 ${
               isActive
                 ? "bg-amber-50 text-amber-700"
                 : "text-stone-600 hover:bg-stone-100 hover:text-stone-900"
@@ -55,10 +55,14 @@ export function DashboardNav({ onNavigate }: { onNavigate?: () => void } = {}) {
         );
       })}
       </div>
-      <div className="mt-auto border-t border-stone-200 pt-4">
+      <div className="mt-auto shrink-0 border-t border-stone-200 pt-3 lg:pt-4">
         <button
-          onClick={() => signOut({ callbackUrl: "/" })}
-          className="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium text-stone-600 transition-colors hover:bg-stone-100 hover:text-stone-900"
+          type="button"
+          onClick={() => {
+            onNavigate?.();
+            signOut({ callbackUrl: "/" });
+          }}
+          className="flex min-h-11 w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-stone-600 transition-colors hover:bg-stone-100 hover:text-stone-900 active:bg-stone-200 lg:min-h-0 lg:py-2.5"
         >
           <LogOut className="h-5 w-5" />
           Sign out

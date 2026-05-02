@@ -34,7 +34,7 @@ export function RestoreInvoiceButton({
       type="button"
       onClick={handleRestore}
       disabled={loading}
-      className="inline-flex items-center gap-1 text-sm font-medium text-amber-600 hover:text-amber-700 disabled:opacity-50"
+      className="inline-flex min-h-10 items-center justify-end gap-1 rounded-md px-2 py-1.5 text-sm font-medium text-amber-600 hover:bg-amber-50 hover:text-amber-800 active:bg-amber-100 disabled:opacity-50 sm:min-h-0 sm:justify-start sm:px-0 sm:py-0 sm:hover:bg-transparent"
       aria-label={`Restore invoice ${invoiceNumber}`}
     >
       <RotateCcw className="h-4 w-4" />

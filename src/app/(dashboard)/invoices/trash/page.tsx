@@ -25,12 +25,12 @@ export default async function InvoicesTrashPage() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
           <Link
             href="/invoices"
-            className="inline-flex items-center gap-2 rounded-lg border border-stone-300 px-4 py-2.5 text-sm font-medium text-stone-700 hover:bg-stone-50"
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-stone-300 px-4 py-2.5 text-sm font-medium text-stone-700 hover:bg-stone-50 active:bg-stone-100 sm:w-auto sm:min-h-0 sm:justify-start"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Invoices
           </Link>
-          <h1 className="text-2xl font-bold text-stone-900 flex items-center gap-2">
+          <h1 className="flex flex-wrap items-center gap-2 text-xl font-bold text-stone-900 sm:text-2xl">
             <Trash2 className="h-7 w-7 text-stone-500" />
             Trash
           </h1>
@@ -53,25 +53,25 @@ export default async function InvoicesTrashPage() {
           <table className="w-full min-w-[640px]">
             <thead>
               <tr className="border-b border-stone-200 bg-stone-50/50">
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Invoice
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Client
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Type
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Date
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-left text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Status
                 </th>
-                <th className="px-6 py-4 text-right text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-right text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Amount
                 </th>
-                <th className="px-6 py-4 text-right text-sm font-medium text-stone-600">
+                <th className="px-3 py-3 text-right text-xs font-medium text-stone-600 sm:px-6 sm:py-4 sm:text-sm">
                   Actions
                 </th>
               </tr>
@@ -84,13 +84,13 @@ export default async function InvoicesTrashPage() {
                     key={inv.id}
                     className="border-b border-stone-100 hover:bg-stone-50/50"
                   >
-                    <td className="px-6 py-4 font-medium text-stone-900">
+                    <td className="px-3 py-3 text-sm font-medium text-stone-900 sm:px-6 sm:py-4 sm:text-base">
                       {inv.invoiceNumber}
                     </td>
-                    <td className="px-6 py-4 text-stone-600">
+                    <td className="px-3 py-3 text-sm text-stone-600 sm:px-6 sm:py-4 sm:text-base">
                       {inv.client?.name ?? "—"}
                     </td>
-                    <td className="px-6 py-4 text-stone-600">
+                    <td className="px-3 py-3 text-sm text-stone-600 sm:px-6 sm:py-4 sm:text-base">
                       <span
                         className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${
                           inv.type === "export"
@@ -101,10 +101,10 @@ export default async function InvoicesTrashPage() {
                         {inv.type}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-stone-600">
+                    <td className="px-3 py-3 text-sm text-stone-600 sm:px-6 sm:py-4 sm:text-base">
                       {formatDateDDMMYYYY(inv.invoiceDate)}
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-3 py-3 sm:px-6 sm:py-4">
                       <span
                         className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${
                           inv.status === "paid"
@@ -117,11 +117,11 @@ export default async function InvoicesTrashPage() {
                         {inv.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-right font-medium text-stone-900">
+                    <td className="px-3 py-3 text-right text-sm font-medium text-stone-900 sm:px-6 sm:py-4 sm:text-base">
                       {inv.currency === "USD" ? "$" : "₹"}
                       {total.toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="px-3 py-3 text-right sm:px-6 sm:py-4">
                       <RestoreInvoiceButton
                         invoiceId={inv.id}
                         invoiceNumber={inv.invoiceNumber}

@@ -11,7 +11,7 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-stone-50 via-amber-50/30 to-stone-50 px-4">
+    <div className="flex min-h-dvh flex-col items-center justify-center bg-gradient-to-br from-stone-50 via-amber-50/30 to-stone-50 px-4 py-10 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-[max(2.5rem,env(safe-area-inset-top))]">
       <main className="max-w-2xl text-center">
         <h1 className="text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl">
           Invoice Generator

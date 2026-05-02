@@ -34,7 +34,7 @@ export function DownloadButton({
     <button
       onClick={handleDownload}
       disabled={loading}
-      className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700 disabled:opacity-50"
+      className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700 active:bg-amber-800 disabled:opacity-50 sm:min-h-0 sm:flex-none"
     >
       <Download className="h-4 w-4" />
       {loading ? "Downloading..." : "Download PDF"}

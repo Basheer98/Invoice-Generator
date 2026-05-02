@@ -89,21 +89,21 @@ export default async function InvoiceDetailPage({
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <Link
           href="/invoices"
-          className="inline-flex items-center gap-2 text-sm text-stone-600 hover:text-stone-900"
+          className="inline-flex min-h-11 w-fit items-center gap-2 text-sm text-stone-600 hover:text-stone-900 active:text-stone-950"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-4 w-4 shrink-0" />
           Back to invoices
         </Link>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex w-full gap-2 sm:w-auto sm:flex-wrap sm:items-center">
           <PrintButton invoiceId={invoice.id} />
           <DownloadButton invoiceId={invoice.id} invoiceNumber={invoice.invoiceNumber} />
         </div>
       </div>
 
       <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-8">
-        <div className="mb-8 flex items-start justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-stone-900">
+        <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0 flex-1">
+            <h1 className="break-words text-lg font-bold leading-snug text-stone-900 sm:text-2xl">
               {invoice.type === "export"
                 ? "INVOICE FOR EXPORT OF SERVICES"
                 : "TAX INVOICE"}
@@ -111,7 +111,7 @@ export default async function InvoiceDetailPage({
             <p className="mt-1 text-stone-600">{invoice.invoiceNumber}</p>
           </div>
           <span
-            className={`inline-flex rounded-full px-3 py-1 text-sm font-medium ${
+            className={`inline-flex shrink-0 self-start rounded-full px-3 py-1 text-sm font-medium sm:self-auto ${
               invoice.status === "paid"
                 ? "bg-green-100 text-green-800"
                 : invoice.status === "sent"

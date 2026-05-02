@@ -33,7 +33,7 @@ export function DeleteInvoiceButton({
       type="button"
       onClick={handleDelete}
       disabled={loading}
-      className="inline-flex items-center gap-1 text-sm font-medium text-red-600 hover:text-red-700 disabled:opacity-50"
+      className="inline-flex min-h-10 min-w-10 items-center justify-center gap-1 rounded-md px-2 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50 hover:text-red-700 active:bg-red-100 disabled:opacity-50 sm:min-h-0 sm:min-w-0 sm:justify-start sm:px-0 sm:py-0 sm:hover:bg-transparent"
       aria-label={`Delete invoice ${invoiceNumber}`}
     >
       <Trash2 className="h-4 w-4" />

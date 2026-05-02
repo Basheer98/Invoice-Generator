@@ -25,14 +25,14 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex h-16 items-center justify-between border-b border-stone-200 px-4 lg:px-6">
+        <div className="flex min-h-14 items-center justify-between border-b border-stone-200 px-3 pt-[env(safe-area-inset-top,0px)] sm:px-4 lg:px-6">
           <Link href="/dashboard" className="text-xl font-bold text-stone-900" onClick={() => setSidebarOpen(false)}>
             Invoice Gen
           </Link>
           <button
             type="button"
             onClick={() => setSidebarOpen(false)}
-            className="rounded-lg p-2 text-stone-500 hover:bg-stone-100 lg:hidden"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-stone-500 hover:bg-stone-100 active:bg-stone-200 lg:hidden"
             aria-label="Close menu"
           >
             <X className="h-5 w-5" />
@@ -44,11 +44,11 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       {/* Main content */}
       <div className="flex flex-1 flex-col lg:ml-64">
         {/* Mobile header */}
-        <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-stone-200 bg-white px-4 lg:hidden">
+        <header className="sticky top-0 z-30 flex min-h-14 items-center justify-between border-b border-stone-200 bg-white px-3 pt-[env(safe-area-inset-top,0px)] sm:px-4 lg:hidden">
           <button
             type="button"
             onClick={() => setSidebarOpen(true)}
-            className="rounded-lg p-2 text-stone-600 hover:bg-stone-100"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-stone-600 hover:bg-stone-100 active:bg-stone-200"
             aria-label="Open menu"
           >
             <Menu className="h-6 w-6" />
@@ -56,10 +56,12 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           <Link href="/dashboard" className="text-lg font-bold text-stone-900">
             Invoice Gen
           </Link>
-          <div className="w-10" />
+          <div className="min-w-11" aria-hidden />
         </header>
 
-        <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
+        <main className="flex-1 px-3 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 sm:px-6 sm:pb-6 sm:pt-6 lg:p-8">
+          {children}
+        </main>
       </div>
     </div>
   );

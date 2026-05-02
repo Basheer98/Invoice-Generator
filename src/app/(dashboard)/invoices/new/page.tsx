@@ -300,8 +300,8 @@ export default function NewInvoicePage() {
 
         <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
           <h2 className="mb-4 text-lg font-semibold text-stone-900">Invoice Type</h2>
-          <div className="flex gap-4">
-            <label className="flex cursor-pointer items-center gap-2 text-stone-900">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+            <label className="flex min-h-11 cursor-pointer items-center gap-3 text-stone-900 sm:min-h-0">
               <input
                 type="radio"
                 name="type"
@@ -311,7 +311,7 @@ export default function NewInvoicePage() {
               />
               Domestic (India – GST)
             </label>
-            <label className="flex cursor-pointer items-center gap-2 text-stone-900">
+            <label className="flex min-h-11 cursor-pointer items-center gap-3 text-stone-900 sm:min-h-0">
               <input
                 type="radio"
                 name="type"
@@ -997,17 +997,17 @@ export default function NewInvoicePage() {
           </div>
         )}
 
-        <div className="flex gap-4">
+        <div className="flex flex-col-reverse gap-3 sm:flex-row sm:flex-wrap">
           <button
             type="submit"
             disabled={loading}
-            className="rounded-lg bg-amber-600 px-6 py-2.5 font-medium text-white transition-colors hover:bg-amber-700 disabled:opacity-50"
+            className="min-h-11 w-full rounded-lg bg-amber-600 px-6 py-2.5 font-medium text-white transition-colors hover:bg-amber-700 active:bg-amber-800 disabled:opacity-50 sm:w-auto"
           >
             {loading ? "Creating..." : "Create Invoice"}
           </button>
           <Link
             href="/invoices"
-            className="rounded-lg border border-stone-300 px-6 py-2.5 font-medium text-stone-700 hover:bg-stone-50"
+            className="flex min-h-11 w-full items-center justify-center rounded-lg border border-stone-300 px-6 py-2.5 text-center font-medium text-stone-700 hover:bg-stone-50 active:bg-stone-100 sm:w-auto"
           >
             Cancel
           </Link>
